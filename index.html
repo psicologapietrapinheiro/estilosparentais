@@ -601,7 +601,6 @@
     </div>
     <div style="margin-left:auto; display:flex; gap:8px; flex-wrap:wrap;">
       <button class="btn btn-outline btn-sm" onclick="downloadPDF()">Baixar PDF</button>
-      <button class="btn btn-outline btn-sm" onclick="startOver()">Novo preenchimento</button>
     </div>
   </div>
   <div id="results-content"></div>
@@ -1073,14 +1072,18 @@ function renderResults(results){
 }
 
 /* ====================================================
+   EMAILJS – inicialização global
+   ==================================================== */
+const SERVICE_ID  = 'service_4on4iw9';
+const TEMPLATE_ID = 'template_d6uwqj2';
+const PUBLIC_KEY  = '2tnjKWYBshcWWkOKT';
+
+emailjs.init(PUBLIC_KEY);
+
+/* ====================================================
    ENVIO DE E-MAIL (EmailJS)
    ==================================================== */
 async function sendEmail(results){
-  // Configurar EmailJS – substitua os IDs abaixo
-  const SERVICE_ID  = 'service_pietra';   // ← substitua pelo seu Service ID
-  const TEMPLATE_ID = 'template_qep';     // ← substitua pelo seu Template ID
-  const PUBLIC_KEY  = 'SUA_PUBLIC_KEY';   // ← substitua pela sua Public Key
-
   const pname = document.getElementById('patient-name').value;
   const pdate = document.getElementById('fill-date').value;
 
@@ -1099,17 +1102,16 @@ async function sendEmail(results){
   });
 
   try {
-    await emailjs.init(PUBLIC_KEY);
     await emailjs.send(SERVICE_ID, TEMPLATE_ID, {
-      to_email: 'psicologapietrapinheiro@gmail.com',
+      to_email:     'psicologapietrapinheiro@gmail.com',
       patient_name: pname,
-      fill_date: pdate,
+      fill_date:    pdate,
       results_body: body,
     });
     showToast('Resultado enviado para o e-mail com sucesso!');
   } catch(e){
     console.error('EmailJS error:', e);
-    showToast('Não foi possível enviar o e-mail agora. Salve o PDF como cópia.');
+    showToast('Não foi possível enviar o e-mail. Salve o PDF como cópia.');
   }
 }
 
