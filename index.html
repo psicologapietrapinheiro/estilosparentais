@@ -461,7 +461,7 @@
   .rank-list { display: flex; flex-direction: column; gap: 6px; }
   .rank-item {
     display: flex; align-items: center; gap: 10px;
-    background: var(--cream);
+    background: var(--cinza-mid);
     border-radius: var(--radius-sm);
     padding: 8px 12px;
     font-size: 13px;
@@ -471,10 +471,10 @@
     display: flex; align-items: center; justify-content: center;
     font-size: 11px; font-weight: 700; flex-shrink: 0;
   }
-  .rank-medal.gold { background: #FAC775; color: #412402; }
-  .rank-medal.silver { background: #D3D1C7; color: #2C2C2A; }
-  .rank-medal.bronze { background: #F5C4B3; color: #712B13; }
-  .rank-medal.rest { background: var(--cream-mid); color: var(--text-muted); }
+  .rank-medal.gold   { background: var(--rosa);       color: white; }
+  .rank-medal.silver { background: var(--azul);       color: white; }
+  .rank-medal.bronze { background: var(--rosa-light); color: var(--rosa-dark); }
+  .rank-medal.rest   { background: var(--cinza);      color: var(--cinza-dark); }
 
   .chart-wrap { margin-top: 2rem; max-width: 420px; margin-left: auto; margin-right: auto; }
 
@@ -495,7 +495,7 @@
   /* ===== UTILITÁRIOS ===== */
   .actions-row { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; margin-top: 2rem; }
   .divider { border: none; border-top: 1px solid var(--border); margin: 1.5rem 0; }
-  .error-msg { color: #A32D2D; font-size: 13px; margin-top: .5rem; display: none; }
+  .error-msg { color: var(--rosa-dark); font-size: 13px; margin-top: .5rem; display: none; }
   .error-msg.show { display: block; }
 </style>
 </head>
